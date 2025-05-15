@@ -1,0 +1,281 @@
+/* Night Sky with Moon, Stars, Rain and Snow Effects */
+:root {
+  --rain-duration: 0.2s;
+  --rain-delay: 0.1s;
+  --snow-duration: 3s;
+  --snow-delay: 0.5s;
+}
+
+body {
+  background-color: #0a1a2f; /* Dark blue night sky */
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.night-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Moon */
+.moon {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 40px 20px rgba(249, 249, 249, 0.5);
+  top: 50px;
+  right: 100px;
+  animation: moon-movement 120s infinite ease-in-out;
+}
+
+@keyframes moon-movement {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-50px, 30px) scale(0.95);
+  }
+  50% {
+    transform: translate(-100px, 10px) scale(0.9);
+  }
+  75% {
+    transform: translate(-50px, -30px) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(230, 230, 230, 0.8);
+}
+
+.moon::after {
+  content: '';
+  position: absolute;
+  bottom: 30px;
+  right: 25px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgba(230, 230, 230, 0.8);
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* Rain */
+.rain-container, .snow-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.rain {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+  animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-70px) translateX(-5px);
+  }
+  50% {
+    transform: translateY(calc(50vh - 50px)) translateX(-15px);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) translateX(-20px);
+    opacity: 0;
+  }
+}
+
+/* Rain splash effect */
+.splash {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform-origin: center bottom;
+  animation: splash 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes splash {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Snow */
+.snow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 5px white;
+  animation: snow-fall linear infinite;
+  opacity: 0;
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-100px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(-50px) translateX(10px) rotate(45deg);
+  }
+  40% {
+    transform: translateY(calc(40vh - 100px)) translateX(30px) rotate(90deg);
+  }
+  60% {
+    transform: translateY(calc(60vh - 100px)) translateX(60px) rotate(180deg);
+  }
+  90% {
+    opacity: 0.8;
+    transform: translateY(calc(90vh - 100px)) translateX(80px) rotate(360deg);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) translateX(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Snow accumulation effect */
+.snow-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: height 10s ease-in-out;
+  z-index: 1;
+}
+
+/* Weather transition control */
+.weather-transition {
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+
+.weather-active {
+  opacity: 1;
+}
+
+/* Add text shadow to improve readability against the night sky */
+h1, h2, h3, p, a, li {
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Decorative artistic elements */
+.artistic-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.circle {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.diamond {
+  transform: rotate(45deg);
+  background: linear-gradient(to right, rgba(255, 87, 34, 0.2), rgba(255, 171, 0, 0.2));
+}
+
+.wind-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 5%, 
+    transparent 10%, 
+    rgba(255, 255, 255, 0.05) 15%, 
+    transparent 20%, 
+    rgba(255, 255, 255, 0.05) 25%, 
+    transparent 30%);
+  animation: wind-movement 15s infinite linear;
+}
+
+@keyframes wind-movement {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+} 

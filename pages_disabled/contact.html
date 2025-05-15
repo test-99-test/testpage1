@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | TSC株式会社</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="../index.html" class="logo">TSC<span>株式会社</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="about.html">私たちについて</a></li>
+          <li><a href="services.html">業務内容</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section>
+        <h1>お問い合わせ</h1>
+        <p>お問い合わせは、下記メールアドレスまでご連絡ください。</p>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:contact@tsc.com">contact@tsc.com</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>フォームでのお問い合わせ</h2>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">件名</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">送信</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">TSC<span>株式会社</span></div>
+        <div class="footer-links">
+          <a href="../index.html">ホーム</a>
+          <a href="about.html">私たちについて</a>
+          <a href="services.html">業務内容</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+        <div class="copyright">© 2024-2025 TSC株式会社</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html> 

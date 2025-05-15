@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSC株式会社</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/night-sky.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* インパクトを強化したスタイル */
+    
+    /* ロゴスタイル強化 */
+    .logo {
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #ff5722; /* TSCをオレンジに */
+      text-decoration: none;
+      font-size: 2em;
+      text-shadow: 0 0 15px rgba(255, 87, 34, 0.7), 0 0 30px rgba(255, 87, 34, 0.4); /* 強化した光彩効果 */
+      position: relative;
+      display: inline-block;
+      transform: perspective(500px) rotateY(0deg);
+      transition: all 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: perspective(500px) rotateY(10deg) scale(1.05);
+    }
+    
+    .logo span {
+      color: #fff; /* 株式会社を白に */
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* 強化した白のテキスト光彩 */
+    }
+    
+    /* スクロール時のヘッダー強化 */
+    header.scrolled {
+      background: rgba(20, 30, 90, 0.95) !important;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    /* ナビゲーションアイテム強化 */
+    nav ul li a {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    
+    nav ul li a:hover {
+      transform: translateY(-3px);
+      color: #ff7a45 !important;
+      text-shadow: 0 0 15px rgba(255, 87, 34, 0.8) !important;
+    }
+    
+    /* セクションヘッダー強化 */
+    section h2 {
+      font-size: 2.5rem !important;
+      font-weight: 800 !important;
+      background: linear-gradient(45deg, #ff5722, #ff9800) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+      letter-spacing: 1px !important;
+      text-shadow: 0px 2px 4px rgba(0,0,0,0.3) !important;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 25px !important;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff5722, transparent);
+      border-radius: 2px;
+    }
+    
+    /* フッターロゴスタイル */
+    .footer-logo {
+      color: #ff5722;
+      font-size: 1.7em;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(255, 87, 34, 0.7);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-logo span {
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    
+    /* スライドアニメーション強化 */
+    .slide-content h2 {
+      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .slide-content p {
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* スライドオーバーレイのアニメーション */
+    @keyframes pulse-overlay {
+      0% {
+        opacity: 0.7;
+        background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+      }
+      100% {
+        opacity: 0.9;
+        background: radial-gradient(circle at 30% 70%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+      }
+    }
+    
+    /* CTAボタンのパルスアニメーション */
+    @keyframes pulse-button {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(255, 87, 34, 0.5);
+      }
+      100% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 87, 34, 0.8), 0 0 15px rgba(255, 87, 34, 0.3);
+      }
+    }
+    
+    /* セクション全体にホバーエフェクト */
+    section {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    /*
+     * Achievementsグラフスタイル
+     * 会社の実績を視覚的に表示するためのバーチャート
+     */
+    
+    /* グラフコンテナ全体のスタイル */
+    .achievements-chart {
+      margin: 40px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .charts-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .charts-row .chart-container {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .chart-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    
+    .chart-container h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* グラフの強化版スタイル - メインコンテナ */
+    .improved-chart {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.25); /* 半透明の背景 */
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 影効果 */
+      backdrop-filter: blur(10px); /* 背景のぼかし効果 */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* 薄い境界線 */
+      position: relative; /* 位置の基準点として設定 */
+    }
+    
+    /* グラフタイトルのスタイル */
+    .improved-chart h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      text-align: center;
+      background: linear-gradient(45deg, #fff, #aaa); /* タイトルのグラデーション */
+      -webkit-background-clip: text; /* テキストをグラデーションで切り抜く(Safari用) */
+      background-clip: text; /* テキストをグラデーションで切り抜く */
+      color: transparent; /* 元の文字色を透明に */
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* テキストの影 */
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin: 0 auto 25px;
+      display: block;
+    }
+    
+    /* タイトル下の装飾線 */
+    .improved-chart h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30%;
+      width: 40%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); /* グラデーション装飾線 */
+      border-radius: 3px;
+    }
+    
+    /* グラフ表示エリアのグリッド */
+    .chart-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end; /* 下揃えでバーを表示 */
+      height: 300px;
+      padding: 20px 10px 45px; /* 下部のパディングを増やして、ラベルのためのスペースを確保 */
+      background: rgba(255, 255, 255, 0.05); /* 薄い背景 */
+      border-radius: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* 下部の境界線 */
+      position: relative;
+      overflow: visible; /* ラベルがはみ出ても表示されるように */
+    }
+    
+    /* グラフの中央に横線を追加（目盛り線） */
+    .chart-grid::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1); /* 薄い横線 */
+      z-index: 0;
+    }
+    
+    /* 各グラフアイテム（棒グラフの列）のコンテナ */
+    .chart-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px; /* 棒の幅 */
+      position: relative;
+      z-index: 2; /* 重なり順序 */
+      height: 100%; /* コンテナの高さを100%に設定 */
+    }
+    
+    /* 棒グラフ自体のスタイル */
+    .chart-bar {
+      width: 100%;
+      border-radius: 15px 15px 0 0; /* 上部の角を丸く */
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      transition: all 0.5s ease; /* アニメーション用のトランジション */
+      animation: growUp 1.8s ease-out forwards; /* 成長アニメーション */
+      transform-origin: bottom; /* アニメーションの起点を下部に */
+      z-index: 1; /* 背面表示に設定（棒グラフを背面に） */
+      border: 1px solid rgba(255, 255, 255, 0.3); /* 薄い境界線 */
+      border-bottom: none; /* 下部の境界線はなし */
+      overflow: hidden;
+      bottom: 0; /* 下部に配置 */
+      position: absolute; /* 絶対位置指定で配置 */
+    }
+    
+    /* 棒グラフの光沢効果（上からの光） */
+    .chart-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%); /* 光沢のグラデーション */
+      border-radius: 15px 15px 0 0;
+      z-index: -1;
+    }
+    
+    /* 棒グラフの波アニメーション効果 */
+    .chart-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15); /* 波の色 */
+      z-index: 0;
+      transform: translateY(100%); /* 初期位置は下部 */
+      animation: wave 3s ease-in-out infinite; /* 波のアニメーション */
+    }
+    
+    /* 波のアニメーションキーフレーム */
+    @keyframes wave {
+      0%, 100% {
+        transform: translateY(100%); /* 下部から開始 */
+      }
+      50% {
+        transform: translateY(30%); /* 中央付近まで上昇 */
+      }
+    }
+    
+    /* 各カテゴリーごとの棒グラフの色設定 */
+    
+    /* AMAT無害化 - 赤系グラデーション */
+    .chart-bar[data-category="amat-decon"] {
+      background: linear-gradient(to top, #ff6b6b, #e74c3c); /* 赤系グラデーション */
+      box-shadow: 0 0 25px rgba(255, 107, 107, 0.6), /* 外側の光彩 */
+                 0 -10px 10px -10px rgba(255, 107, 107, 0.8) inset; /* 内側の光彩 */
+    }
+    
+    /* AMAT解体 - 紫系グラデーション */
+    .chart-bar[data-category="amat-disassembly"] {
+      background: linear-gradient(to top, #5f27cd, #341f97); /* 紫系グラデーション */
+      box-shadow: 0 0 25px rgba(95, 39, 205, 0.6), /* 外側の光彩 */
+                 0 -10px 10px -10px rgba(95, 39, 205, 0.8) inset; /* 内側の光彩 */
+    }
+    
+    /* TEL無害化 - ティール系グラデーション */
+    .chart-bar[data-category="tel-decon"] {
+      background: linear-gradient(to top, #00d2d3, #10ac84); /* ティール系グラデーション */
+      box-shadow: 0 0 25px rgba(0, 210, 211, 0.6), /* 外側の光彩 */
+                 0 -10px 10px -10px rgba(0, 210, 211, 0.8) inset; /* 内側の光彩 */
+    }
+    
+    /* TEL解体 - オレンジ系グラデーション */
+    .chart-bar[data-category="tel-disassembly"] {
+      background: linear-gradient(to top, #feca57, #fa8231); /* オレンジ系グラデーション */
+      box-shadow: 0 0 25px rgba(254, 202, 87, 0.6), /* 外側の光彩 */
+                 0 -10px 10px -10px rgba(254, 202, 87, 0.8) inset; /* 内側の光彩 */
+    }
+    
+    /* SCREEN解体 - 紫/ピンク系グラデーション (より目立つ色に変更) */
+    .chart-bar[data-category="screen-disassembly"] {
+      background: linear-gradient(to top, #fd79a8, #e84393); /* 鮮やかなピンク/紫系グラデーション */
+      box-shadow: 0 0 25px rgba(253, 121, 168, 0.8), /* より強い外側の光彩 */
+                 0 -10px 10px -10px rgba(232, 67, 147, 0.9) inset; /* より強い内側の光彩 */
+    }
+    
+    /* 棒グラフが下から成長するアニメーション - 強化版 */
+    @keyframes growUp {
+      0% {
+        transform: scaleY(0); /* 高さ0から開始 */
+        opacity: 0.3;
+      }
+      40% {
+        transform: scaleY(0.7);
+        opacity: 0.7;
+      }
+      70% {
+        transform: scaleY(1.08); /* より大きく跳ね上げる効果 */
+        opacity: 1;
+      }
+      85% {
+        transform: scaleY(0.95); /* 少し縮む */
+      }
+      100% {
+        transform: scaleY(1); /* 最終的に指定の高さに */
+      }
+    }
+    
+    /* ホバー時の効果 - 強化版 */
+    .chart-bar:hover {
+      transform: translateY(-15px) scaleY(1.05); /* より上に浮かせる */
+      filter: brightness(1.3) contrast(1.1); /* より明るく、コントラスト強化 */
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 35px currentColor;
+      z-index: 10;
+    }
+    
+    /* 各バーを少しずつ遅れて表示するアニメーション */
+    .chart-item:nth-child(1) .chart-bar {
+      animation-delay: 0.1s;
+    }
+    
+    .chart-item:nth-child(2) .chart-bar {
+      animation-delay: 0.3s;
+    }
+    
+    .chart-item:nth-child(3) .chart-bar {
+      animation-delay: 0.5s;
+    }
+    
+    .chart-item:nth-child(4) .chart-bar {
+      animation-delay: 0.7s;
+    }
+    
+    .chart-item:nth-child(5) .chart-bar {
+      animation-delay: 0.9s;
+    }
+    
+    /* 数値表示のスタイル */
+    .chart-number {
+      color: white;
+      font-weight: bold;
+      font-size: 2.2rem; /* 大きめのフォントサイズ */
+      padding: 15px 0 5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); /* 数字を読みやすくする影 */
+      position: relative;
+      z-index: 2; /* 数字を前面に */
+    }
+    
+    /* 台数の「台」ラベルのスタイル */
+    .bar-label {
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: -5px; /* 数字に近づける */
+      opacity: 0.9;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 読みやすくする影 */
+      position: relative;
+      z-index: 2; /* 前面に表示 */
+    }
+    
+    /* 棒グラフ下部のカテゴリーラベル */
+    .chart-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 0 3px rgba(0, 0, 0, 0.8); /* 二重の影効果 */
+      letter-spacing: 0.3px;
+      position: absolute;
+      bottom: -38px; /* グラフの下に配置をさらに下げる */
+      width: 100%;
+      transform: rotate(-45deg); /* 斜めに表示 */
+      white-space: nowrap; /* 改行させない */
+      transform-origin: left center; /* 回転の基準点 */
+      left: 50%;
+      margin-left: -5px;
+      z-index: 30; /* より高い値で最前面に表示 */
+      background: rgba(0, 0, 0, 0.7); /* 背景を濃くして視認性向上 */
+      padding: 2px 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7), 0 0 5px rgba(255, 255, 255, 0.1); /* ラベルの影強化 */
+      backdrop-filter: blur(3px); /* 背景のぼかし強化 */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* 境界線追加 */
+    }
+    
+    /* ラベルの下線装飾 */
+    .chart-label::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 70%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.5); /* 薄い白色 */
+      border-radius: 1px;
+      transform: rotate(45deg); /* 斜めに表示 */
+      transform-origin: left center; /* 回転の基準点 */
+    }
+    
+    /* グラフ下部の凡例 */
+    .chart-legend {
+      text-align: center;
+      margin-top: 20px;
+      color: #ddd; /* 薄いグレー */
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    
+    .achievements-details {
+      margin-top: 20px;
+    }
+    
+    .achievements-details ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    
+    /* 棒グラフ列の底部に表示される線 */
+    .chart-item::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.3); /* 薄い白色の線 */
+      border-radius: 2px;
+    }
+    
+          /* モバイル向けレスポンシブ調整 */
+      @media (max-width: 768px) {
+        /* タイトルサイズ調整 */
+        .improved-chart h3 {
+          font-size: 1.3rem;
+        }
+        
+        /* グラフエリアの高さ調整 */
+        .chart-grid {
+          height: 240px;
+          padding: 20px 5px 55px; /* パディングを増やして下部に余裕を持たせる */
+        }
+        
+        /* 各棒の幅を最適化 */
+        .chart-item {
+          width: 40px; /* 幅をさらに狭く */
+          margin: 0 2px; /* 左右のマージンを追加 */
+        }
+        
+        /* 数字を小さく */
+        .chart-number {
+          font-size: 1.2rem;
+          padding-top: 8px;
+        }
+        
+        /* 単位表示を小さく */
+        .bar-label {
+          font-size: 0.65rem;
+          margin-top: -8px; /* 上部の余白を調整 */
+        }
+        
+        /* ラベル調整 - 重なりを防ぐための調整 */
+        .chart-label {
+          font-size: 0.7rem;
+          bottom: -45px; /* さらに下に配置して重なりを防止 */
+          left: 25%; /* 位置調整 */
+          padding: 1px 3px; /* パディングをより小さく */
+          transform: rotate(-35deg); /* 回転角度を調整 */
+          white-space: nowrap;
+          width: auto; /* 幅を内容に合わせる */
+          max-width: 100px; /* 最大幅を設定 */
+          z-index: 100 !important; /* スマホ表示ではさらに高い優先度で表示 */
+          background: rgba(0, 0, 0, 0.85); /* 背景をさらに濃くして視認性向上 */
+        }
+        
+        /* 凡例のフォントサイズ調整 */
+        .chart-legend p {
+          font-size: 0.85rem;
+          margin-top: 40px; /* ラベルとの間隔を確保 */
+        }
+        
+        /* Achievementsセクションの調整 */
+        .achievements-details ul {
+          grid-template-columns: 1fr; /* モバイルでは1列に */
+          font-size: 0.9rem;
+        }
+        
+        /* セクション間の間隔調整 */
+        section {
+          margin-bottom: 3rem;
+          padding: 0 10px;
+        }
+      }
+  </style>
+</head>
+<body>
+  <!-- 夜空背景とエフェクト用コンテナ -->
+  <div class="night-container">
+    <div class="moon"></div><!-- 月の表示 -->
+    <div class="stars"></div><!-- 星の表示（JSで動的生成） -->
+    
+    <div class="rain-container weather-transition"></div><!-- 雨エフェクト -->
+    <div class="snow-container weather-transition"></div><!-- 雪エフェクト -->
+    <div class="snow-ground"></div><!-- 地面の雪エフェクト -->
+  </div>
+  
+  <!-- ヘッダーナビゲーション -->
+  <header id="header">
+    <div class="container">
+      <!-- ロゴ部分 -->
+      <div class="logo-container">
+        <a href="#home" class="logo">TSC<span>株式会社</span></a>
+      </div>
+      <!-- メインナビゲーションメニュー -->
+      <nav>
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#company">Company</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインビジュアルスライダー - インパクト強化版 -->
+  <div id="home" class="slider-container">
+    <div class="slider">
+      <!-- スライド1 -->
+      <div class="slide" style="background-image: url('assets/images/main-visual1.jpg')">
+        <div class="slide-content">
+          <h2>テクノロジーの進化を支える、<br><span>解体と創造のプロフェッショナル</span></h2>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('assets/images/main-visual2.jpg')">
+        <div class="slide-content">
+          <h2>高度な技術力と<br><span>確かな安全管理</span></h2>
+          <p>精密機械を熟知した技術者が、安全かつ効率的に対応します。</p>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('assets/images/main-visual3.jpg')">
+        <div class="slide-content">
+          <h2>持続可能な<br><span>未来への貢献</span></h2>
+          <p>資源の有効活用と環境負荷の低減を追求します。</p>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('assets/images/main-visual4.jpg')">
+        <div class="slide-content">
+          <h2>ニーズに<span>柔軟に対応</span>する<br>サービス体制</h2>
+          <p>お客様の課題を解決するベストなソリューションを提供します。</p>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('assets/images/main-video.gif')">
+        <div class="slide-content">
+          <h2>革新的な<span>アプローチ</span>で<br>業界をリード</h2>
+          <p>最新技術と蓄積されたノウハウで、新たな価値を創出します。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slider-navigation">
+      <div class="slider-arrow prev">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="slider-arrow next">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+    <div class="slider-dots">
+      <div class="slider-dot active"></div>
+      <div class="slider-dot"></div>
+      <div class="slider-dot"></div>
+      <div class="slider-dot"></div>
+      <div class="slider-dot"></div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="container">
+      <section id="about">
+        <h2>About Us</h2>
+        <p>進化し続けるテクノロジーのサイクルにおいて、役目を終えた半導体製造装置。私たちTSC株式会社は、その解体・撤去を通じて、新たな価値を創造します。熟練の技術者たちが、精密機械の構造を熟知し、高度な解体技術と安全管理体制で、あらゆる現場に対応。単なる解体ではなく、資源の有効活用、環境負荷の低減をも視野に入れた、責任ある解体業務をご提供します。</p>
+      </section>
+
+      <section id="services">
+        <h2>Services</h2>
+        <ul>
+          <li>半導体製造装置無害化業務・解体業務・フォロー業務 (AMAT/TEL/LAM/NIKON/CANON/SCREEN等)</li>
+          <li>配管施工・配管組み立て業務</li>
+          <li>搬送治具制作・加工</li>
+          <li>技術支援業務（ロボットティーチング等）</li>
+        </ul>
+      </section>
+
+      <section id="achievements">
+        <h2>Achievements</h2>
+        <p>※2025.5時点</p>
+        
+        <!-- 実績グラフ表示エリア -->
+        <div class="achievements-chart">
+          <div class="chart-container improved-chart">
+            <h3>装置対応実績 2025.5時点</h3>
+            <!-- グラフグリッド - 5つの棒グラフを表示 ---->
+            <div class="chart-grid">
+              <!-- AMAT無害化の棒グラフ -->
+              <div class="chart-item">
+                <div class="chart-bar" style="height: 95%; bottom: 0;" data-category="amat-decon">
+                  <span class="chart-number">12</span>
+                  <div class="bar-label">台</div>
+                </div>
+                <div class="chart-label">AMAT無害化</div>
+              </div>
+              <!-- AMAT解体の棒グラフ -->
+              <div class="chart-item">
+                <div class="chart-bar" style="height: 88%; bottom: 0;" data-category="amat-disassembly">
+                  <span class="chart-number">10</span>
+                  <div class="bar-label">台</div>
+                </div>
+                <div class="chart-label">AMAT解体</div>
+              </div>
+              <!-- TEL無害化の棒グラフ -->
+              <div class="chart-item">
+                <div class="chart-bar" style="height: 80%; bottom: 0;" data-category="tel-decon">
+                  <span class="chart-number">8</span>
+                  <div class="bar-label">台</div>
+                </div>
+                <div class="chart-label">TEL無害化</div>
+              </div>
+              <!-- TEL解体の棒グラフ -->
+              <div class="chart-item">
+                <div class="chart-bar" style="height: 88%; bottom: 0;" data-category="tel-disassembly">
+                  <span class="chart-number">10</span>
+                  <div class="bar-label">台</div>
+                </div>
+                <div class="chart-label">TEL解体</div>
+              </div>
+              <!-- SCREEN解体の棒グラフ -->
+              <div class="chart-item">
+                <div class="chart-bar" style="height: 60%; bottom: 0;" data-category="screen-disassembly">
+                  <span class="chart-number">5</span>
+                  <div class="bar-label">台</div>
+                </div>
+                <div class="chart-label">SCREEN解体</div>
+              </div>
+            </div>
+            <!-- グラフ凡例 -->
+            <div class="chart-legend">
+              <p>対応実績数</p>
+            </div>
+          </div>
+          
+          <!-- 実績の詳細リスト -->
+          <div class="achievements-details">
+        <ul>
+          <li>AMAT装置無害化作業 12台 (Vantage, Centris, Centura)</li>
+          <li>AMAT装置解体作業 10台 (Vantage, Centris)</li>
+          <li>TEL装置無害化作業 8台 (ACT12, Lithius, Lithius Pro)</li>
+          <li>TEL装置解体作業 10台 (ACT12, Lithius, Lithius Pro)</li>
+              <li>SCREEN装置解体作業 5台</li>
+        </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="company">
+        <h2>Company</h2>
+        <ul>
+          <li>会社名: TSC株式会社</li>
+          <li>所在地: 〒512-8047 三重県四日市市八千代台1-290</li>
+          <li>代表者: 浜口 敬 (hamaguchi.kei)</li>
+          <li>設立日: 2024.5</li>
+          <li>資本金: 1,000,000円</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>お問い合わせは、下記メールアドレスまでご連絡ください。</p>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:contact@tsc.com">contact@tsc.com</a>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">TSC<span>株式会社</span></div>
+        <div class="footer-links">
+          <a href="#home">HOME</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#company">Company</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+        <div class="copyright">© 2024-2025 TSC株式会社</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 外部JavaScriptファイル（夜空エフェクト制御用） -->
+  <script src="js/main.js"></script>
+  <!-- インラインスクリプト（スライダー制御用） -->
+  <script>
+    // スライダー初期化用の即時関数 - DOMの読み込みに関わらず初期化を保証
+    (function initSlider() {
+      // DOMがまだ読み込み中ならロード完了時に実行、既に読み込み完了なら即時実行
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupSlider);
+      } else {
+        setupSlider();
+      }
+    })();
+    
+    // スライダーの機能実装
+    /** 
+     * スライダーを初期化・制御する関数
+     * この関数はスライダーの全ての機能（自動送り、ナビゲーション、ドット操作）を設定
+     */
+    function setupSlider() {
+      // スライダー関連の要素取得
+      const slider = document.querySelector('.slider'); // スライダー本体
+      const slides = document.querySelectorAll('.slide'); // 各スライド
+      const dots = document.querySelectorAll('.slider-dot'); // ドットナビゲーション
+      const prevBtn = document.querySelector('.prev'); // 前へボタン
+      const nextBtn = document.querySelector('.next'); // 次へボタン
+      let currentSlide = 0; // 現在のスライド位置
+      const slideCount = slides.length; // スライド総数
+      let slideInterval; // 自動スライド用タイマー
+
+      // スライドを切り替える関数
+      function goToSlide(n) {
+        slider.style.transform = `translateX(-${n * 20}%)`;
+        currentSlide = n;
+        updateDots();
+      }
+
+      // 次のスライドに進む関数
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        goToSlide(currentSlide);
+      }
+
+      // 前のスライドに戻る関数
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        goToSlide(currentSlide);
+      }
+
+      // ドットの状態を更新する関数
+      function updateDots() {
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentSlide);
+        });
+      }
+
+      // 自動スライドショーの開始
+      function startSlideShow() {
+        stopSlideShow(); // 既存のインターバルをクリア
+        slideInterval = setInterval(() => {
+          nextSlide();
+        }, 7000); // 7秒ごとに切り替え
+      }
+
+      // 自動スライドショーの停止
+      function stopSlideShow() {
+        if (slideInterval) {
+        clearInterval(slideInterval);
+        }
+      }
+
+      // イベントリスナーの設定
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopSlideShow();
+        startSlideShow();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopSlideShow();
+        startSlideShow();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          stopSlideShow();
+          startSlideShow();
+        });
+      });
+
+      // スライダーのホバー時に自動スライドを停止
+      const sliderContainer = document.querySelector('.slider-container');
+      sliderContainer.addEventListener('mouseenter', stopSlideShow);
+      sliderContainer.addEventListener('mouseleave', startSlideShow);
+
+      // 初期スライドの設定とスライドショーの強制開始
+      goToSlide(0);
+      
+      // 自動スライドショーの開始 - 一度目の呼び出し
+      startSlideShow();
+      
+      // 念のため、遅延して再度スライドショーを開始して確実にする
+      setTimeout(() => {
+        startSlideShow();
+      }, 1000);
+
+      // スクロール時のヘッダーのスタイル変更
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // スムーススクロール
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            const headerOffset = document.querySelector('header').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      setupSlider();
+    });
+  </script>
+</body>
+</html>
