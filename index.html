@@ -36,6 +36,12 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* 強化した白のテキスト光彩 */
     }
     
+    /* ロゴコンテナスタイル */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
     /* スクロール時のヘッダー強化 */
     header.scrolled {
       background: rgba(20, 30, 90, 0.95) !important;
@@ -95,6 +101,19 @@
     .footer-logo span {
       color: #fff;
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    
+    /* タグライン（半導体製造装置解体専門）のスタイル */
+    .tagline {
+      color: #ffffff;
+      font-size: 0.9em;
+      margin-left: 10px;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      opacity: 0.9;
+      vertical-align: middle;
+      display: inline-block;
+      padding-bottom: 5px;
     }
     
     /* スライドアニメーション強化 */
@@ -508,69 +527,82 @@
       border-radius: 2px;
     }
     
-          /* モバイル向けレスポンシブ調整 */
-      @media (max-width: 768px) {
-        /* タイトルサイズ調整 */
-        .improved-chart h3 {
-          font-size: 1.3rem;
-        }
-        
-        /* グラフエリアの高さ調整 */
-        .chart-grid {
-          height: 240px;
-          padding: 20px 5px 55px; /* パディングを増やして下部に余裕を持たせる */
-        }
-        
-        /* 各棒の幅を最適化 */
-        .chart-item {
-          width: 40px; /* 幅をさらに狭く */
-          margin: 0 2px; /* 左右のマージンを追加 */
-        }
-        
-        /* 数字を小さく */
-        .chart-number {
-          font-size: 1.2rem;
-          padding-top: 8px;
-        }
-        
-        /* 単位表示を小さく */
-        .bar-label {
-          font-size: 0.65rem;
-          margin-top: -8px; /* 上部の余白を調整 */
-        }
-        
-        /* ラベル調整 - 重なりを防ぐための調整 */
-        .chart-label {
-          font-size: 0.7rem;
-          bottom: -45px; /* さらに下に配置して重なりを防止 */
-          left: 25%; /* 位置調整 */
-          padding: 1px 3px; /* パディングをより小さく */
-          transform: rotate(-35deg); /* 回転角度を調整 */
-          white-space: nowrap;
-          width: auto; /* 幅を内容に合わせる */
-          max-width: 100px; /* 最大幅を設定 */
-          z-index: 100 !important; /* スマホ表示ではさらに高い優先度で表示 */
-          background: rgba(0, 0, 0, 0.85); /* 背景をさらに濃くして視認性向上 */
-        }
-        
-        /* 凡例のフォントサイズ調整 */
-        .chart-legend p {
-          font-size: 0.85rem;
-          margin-top: 40px; /* ラベルとの間隔を確保 */
-        }
-        
-        /* Achievementsセクションの調整 */
-        .achievements-details ul {
-          grid-template-columns: 1fr; /* モバイルでは1列に */
-          font-size: 0.9rem;
-        }
-        
-        /* セクション間の間隔調整 */
-        section {
-          margin-bottom: 3rem;
-          padding: 0 10px;
-        }
+    /* モバイル向けレスポンシブ調整 */
+    @media (max-width: 768px) {
+      /* タイトルサイズ調整 */
+      .improved-chart h3 {
+        font-size: 1.3rem;
       }
+      
+      /* グラフエリアの高さ調整 */
+      .chart-grid {
+        height: 240px;
+        padding: 20px 5px 55px; /* パディングを増やして下部に余裕を持たせる */
+      }
+      
+      /* 各棒の幅を最適化 */
+      .chart-item {
+        width: 40px; /* 幅をさらに狭く */
+        margin: 0 2px; /* 左右のマージンを追加 */
+      }
+      
+      /* 数字を小さく */
+      .chart-number {
+        font-size: 1.2rem;
+        padding-top: 8px;
+      }
+      
+      /* 単位表示を小さく */
+      .bar-label {
+        font-size: 0.65rem;
+        margin-top: -8px; /* 上部の余白を調整 */
+      }
+      
+      /* ラベル調整 - 重なりを防ぐための調整 */
+      .chart-label {
+        font-size: 0.7rem;
+        bottom: -45px; /* さらに下に配置して重なりを防止 */
+        left: 25%; /* 位置調整 */
+        padding: 1px 3px; /* パディングをより小さく */
+        transform: rotate(-35deg); /* 回転角度を調整 */
+        white-space: nowrap;
+        width: auto; /* 幅を内容に合わせる */
+        max-width: 100px; /* 最大幅を設定 */
+        z-index: 100 !important; /* スマホ表示ではさらに高い優先度で表示 */
+        background: rgba(0, 0, 0, 0.85); /* 背景をさらに濃くして視認性向上 */
+      }
+      
+      /* 凡例のフォントサイズ調整 */
+      .chart-legend p {
+        font-size: 0.85rem;
+        margin-top: 40px; /* ラベルとの間隔を確保 */
+      }
+      
+      /* Achievementsセクションの調整 */
+      .achievements-details ul {
+        grid-template-columns: 1fr; /* モバイルでは1列に */
+        font-size: 0.9rem;
+      }
+      
+      /* セクション間の間隔調整 */
+      section {
+        margin-bottom: 3rem;
+        padding: 0 10px;
+      }
+      
+      /* ロゴコンテナの調整 */
+      .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      /* タグラインのモバイル調整 */
+      .tagline {
+        margin-left: 0;
+        font-size: 0.7em;
+        margin-top: -5px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -590,6 +622,7 @@
       <!-- ロゴ部分 -->
       <div class="logo-container">
         <a href="#home" class="logo">TSC<span>株式会社</span></a>
+        <span class="tagline">--半導体製造装置解体専門--</span>
       </div>
       <!-- メインナビゲーションメニュー -->
       <nav>
@@ -666,7 +699,7 @@
       <section id="services">
         <h2>Services</h2>
         <ul>
-          <li>半導体製造装置無害化業務・解体業務・フォロー業務 (AMAT/TEL/LAM/NIKON/CANON/SCREEN等)</li>
+          <li>半導体製造装置無害化業務・解体業務・フォロー業務<br>(AMAT/TEL/LAM/NIKON/CANON/SCREEN等)</li>
           <li>配管施工・配管組み立て業務</li>
           <li>搬送治具制作・加工</li>
           <li>技術支援業務（ロボットティーチング等）</li>
